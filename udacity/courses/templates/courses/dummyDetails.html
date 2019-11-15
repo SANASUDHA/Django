@@ -1,0 +1,20 @@
+{% extends 'courses/base.html' %}
+{% block content %}
+	<div class="row container">
+		{% for detail in details %}
+			<div class="col-sm-3">
+				<div class="card bg-success text-white">
+					<a href="{% url 'dummy-detail' detail.id %}" class="text-light">
+						<div class="card-body">
+								{{ detail.id }}
+								{{ detail.name }}
+						</div>
+					</a>
+				</div><br>
+			</div>
+		{% endfor %}
+	</div>
+
+{% endblock content %}
+
+	

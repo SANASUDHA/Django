@@ -1,0 +1,49 @@
+{% extends 'courses/base.html' %}
+{% block content %}
+	<div class="container">
+
+		<table class="table table-bordered">
+			<tr class="table-danger">
+				<th>Sno</th>
+				<th>Name</th>
+				<th>Mobile</th>
+				<th>Email</th>
+				{% if user.is_authenticated %}
+				<th colspan="2">
+					Operations
+					<a href="{% url 'addDetails' %}" class="btn btn-sm text-info float-right">
+						<i class="fas fa-plus-circle" style="font-size:14px;"></i>
+					</a>
+				</th>
+				{% endif %}
+			</tr>
+			{% for detail in details %}
+				<tr class="table-success">
+					<td>{{ forloop.counter }}</td>
+					<td>{{detail.name}}</td>
+					<td>{{detail.mobile}}</td>
+					<td>{{detail.email}}</td>
+					{% if user.is_authenticated %}
+						<td>
+							<a href="{% url 'editDummies' detail.id %}" 
+							   class="btn btn-info btn-success">
+							   	<i class='fas fa-edit' style='font-size:10px;color:white'></i>
+							   </a>
+						</td>
+						<td>
+							<a href="{% url 'deleteDummies' detail.id %}" class="btn btn-sm btn-success">
+								<i class='fas fa-trash' style='font-size:10px;color:white'></i>
+							</a>
+						</td>
+					{% endif %}
+				</tr>
+			{% endfor %}
+		</table>
+		
+			
+		
+	</div>
+
+{% endblock content %}
+
+	

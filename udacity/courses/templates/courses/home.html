@@ -1,0 +1,26 @@
+{% extends 'courses/base.html' %}
+{% load staticfiles %}
+{% block content %}
+	<div class="container">
+		<h1>Home Page</h1>
+		<img src="/static/images/lilli.jpg" width="150" height="150">
+		<img src="{% static 'images/flower.jpg' %}" width="150" height="150">
+		<img src="{% static 'images/white.jpg' %}" width="150" height="150">
+	</div>
+	
+	{% for post in posts %}
+		<h2>{{ user.name }}</h2>
+		{% for user in users %}
+			<ul>
+				{% if user.id == post.userId %}
+					<li>
+						<h5>{{post.title}}</h5>
+						<p>{{post.body}}</p>
+					</li>
+				{% endif %}
+				
+			</ul>
+		{% endfor %}<hr>
+	{% endfor %}
+
+{% endblock content %}

@@ -1,0 +1,17 @@
+{% extends 'courses/base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+	<div class="container card col-sm-4 p-3">
+		<form method="post">
+			{% csrf_token %}
+			{{ form|crispy }}
+				
+			
+			<input type="submit" value="Login" class="btn btn-primary btn-block">
+		</form>
+		<a href="{% url 'register' %}" class="btn btn-link float-left">SignUp Here</a>
+	</div>
+	
+	
+	
+{% endblock content %}
